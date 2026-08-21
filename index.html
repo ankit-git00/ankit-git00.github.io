@@ -1,119 +1,410 @@
-<div align="center">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ankit Lal — Software Engineer</title>
+<meta name="description" content="Ankit Lal — Software Engineer at MoEngage. Backend systems, distributed data pipelines, and agentic AI tooling.">
+<style>
+  :root {
+    color-scheme: light;
+    --surface-1:      #fcfcfb;
+    --page-plane:     #f9f9f7;
+    --text-primary:   #0b0b0b;
+    --text-secondary: #52514e;
+    --muted:          #898781;
+    --gridline:       #e1e0d9;
+    --border:         rgba(11,11,11,0.10);
+    --accent:         #2a78d6;
+    --accent-ink:     #ffffff;
+    --good:           #0ca30c;
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --surface-1:      #1a1a19;
+    --page-plane:     #0d0d0d;
+    --text-primary:   #ffffff;
+    --text-secondary: #c3c2b7;
+    --muted:          #898781;
+    --gridline:       #2c2c2a;
+    --border:         rgba(255,255,255,0.10);
+    --accent:         #3987e5;
+    --accent-ink:     #ffffff;
+    --good:           #0ca30c;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --surface-1:      #1a1a19;
+      --page-plane:     #0d0d0d;
+      --text-primary:   #ffffff;
+      --text-secondary: #c3c2b7;
+      --muted:          #898781;
+      --gridline:       #2c2c2a;
+      --border:         rgba(255,255,255,0.10);
+      --accent:         #3987e5;
+      --good:           #0ca30c;
+    }
+  }
 
-# Hi, I'm Ankit Lal 👋
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    margin:0; background:var(--page-plane); color:var(--text-primary);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    line-height:1.55;
+  }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  .wrap { max-width:980px; margin:0 auto; padding:0 22px; }
+  section { padding:64px 0; border-bottom:1px solid var(--gridline); }
+  section:last-of-type { border-bottom:none; }
+  h2.section-title {
+    font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted);
+    margin:0 0 26px; font-weight:700;
+  }
 
-*Software Engineer @ MoEngage* — building backend systems, distributed data pipelines, and agentic AI tooling.
+  /* nav */
+  header.nav {
+    position:sticky; top:0; z-index:50; background:color-mix(in srgb, var(--page-plane) 88%, transparent);
+    backdrop-filter:blur(8px); border-bottom:1px solid var(--gridline);
+  }
+  .nav-inner { max-width:980px; margin:0 auto; padding:14px 22px; display:flex; align-items:center; justify-content:space-between; }
+  .nav-logo { font-weight:700; font-size:15px; }
+  .nav-links { display:flex; gap:22px; align-items:center; }
+  .nav-links a { color:var(--text-secondary); font-size:13.5px; font-weight:500; }
+  .nav-links a:hover { color:var(--text-primary); text-decoration:none; }
+  .theme-btn, .menu-btn {
+    background:var(--surface-1); border:1px solid var(--border); border-radius:8px; padding:6px 10px;
+    cursor:pointer; font-size:13px; color:var(--text-primary); font-family:inherit;
+  }
+  .menu-btn { display:none; }
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/ankitlal14)
-[![Email](https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail&logoColor=white)](mailto:ankitlal.mail@gmail.com)
-[![LeetCode](https://img.shields.io/badge/LeetCode-FFA116?style=flat&logo=leetcode&logoColor=black)](https://leetcode.com/ankitlal14)
-[![Codeforces](https://img.shields.io/badge/Codeforces-1F8ACB?style=flat&logo=codeforces&logoColor=white)](https://codeforces.com/profile/ankitlal14)
+  /* hero */
+  .hero { padding:88px 0 60px; border-bottom:1px solid var(--gridline); }
+  .eyebrow {
+    display:inline-flex; align-items:center; gap:7px; font-size:12.5px; color:var(--good);
+    background:color-mix(in srgb, var(--good) 12%, var(--surface-1)); border-radius:20px; padding:5px 12px; margin-bottom:18px;
+  }
+  .eyebrow .dot { width:7px; height:7px; border-radius:50%; background:var(--good); }
+  .hero h1 { font-size:44px; margin:0 0 12px; line-height:1.1; letter-spacing:-.01em; }
+  .hero .role { font-size:19px; color:var(--text-secondary); margin:0 0 20px; font-weight:500; }
+  .hero p.bio { max-width:640px; color:var(--text-secondary); font-size:15.5px; margin:0 0 28px; }
+  .cta-row { display:flex; gap:10px; flex-wrap:wrap; }
+  .btn {
+    display:inline-flex; align-items:center; gap:6px; padding:10px 18px; border-radius:8px; font-size:14px;
+    font-weight:600; border:1px solid var(--border); cursor:pointer;
+  }
+  .btn.primary { background:var(--accent); color:var(--accent-ink); border-color:transparent; }
+  .btn.primary:hover { opacity:.92; text-decoration:none; }
+  .btn.ghost { background:var(--surface-1); color:var(--text-primary); }
+  .btn.ghost:hover { border-color:var(--muted); text-decoration:none; }
+
+  /* stat tiles */
+  .stats { display:grid; grid-template-columns:repeat(4, 1fr); gap:14px; margin-top:46px; }
+  .stat-tile { background:var(--surface-1); border:1px solid var(--border); border-radius:10px; padding:16px; }
+  .stat-tile .sval { font-size:26px; font-weight:700; color:var(--accent); font-variant-numeric:tabular-nums; }
+  .stat-tile .slabel { font-size:12px; color:var(--text-secondary); margin-top:4px; }
+
+  /* about */
+  .about-body { display:flex; gap:40px; flex-wrap:wrap; }
+  .about-text { flex:2; min-width:280px; color:var(--text-secondary); font-size:15px; }
+  .about-text p { margin:0 0 14px; }
+  .about-side { flex:1; min-width:220px; }
+  .fact { display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--gridline); font-size:13.5px; }
+  .fact .k { color:var(--muted); }
+  .fact .v { font-weight:600; }
+
+  /* experience */
+  .timeline { display:flex; flex-direction:column; gap:0; }
+  .job { display:grid; grid-template-columns:170px 1fr; gap:20px; padding:26px 0; border-bottom:1px solid var(--gridline); }
+  .timeline .job:first-child { padding-top:0; }
+  .timeline .job:last-child { border-bottom:none; padding-bottom:0; }
+  .job .when { color:var(--muted); font-size:13px; font-weight:600; padding-top:2px; }
+  .job h3 { margin:0 0 2px; font-size:17px; }
+  .job .co { color:var(--text-secondary); font-size:13.5px; margin-bottom:12px; }
+  .job ul { margin:0 0 12px; padding-left:18px; color:var(--text-secondary); font-size:14px; }
+  .job ul li { margin-bottom:6px; }
+  .tag-row { display:flex; flex-wrap:wrap; gap:6px; }
+  .tag {
+    font-size:11.5px; color:var(--text-secondary); background:var(--surface-1); border:1px solid var(--border);
+    border-radius:20px; padding:3px 10px;
+  }
+  @media (max-width:700px) { .job { grid-template-columns:1fr; gap:6px; } }
+
+  /* skills */
+  .skill-groups { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:22px; }
+  .skill-group h4 { font-size:13px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; margin:0 0 10px; }
+  .skill-tags { display:flex; flex-wrap:wrap; gap:7px; }
+
+  /* projects */
+  .project-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:16px; }
+  .project-card { background:var(--surface-1); border:1px solid var(--border); border-radius:12px; padding:20px; display:flex; flex-direction:column; }
+  .project-card h3 { margin:0 0 8px; font-size:16.5px; }
+  .project-card p { color:var(--text-secondary); font-size:14px; margin:0 0 14px; flex-grow:1; }
+  .badge-wip {
+    display:inline-block; font-size:10.5px; font-weight:700; letter-spacing:.03em; color:#a97300;
+    background:color-mix(in srgb, #fab219 20%, var(--surface-1)); border-radius:20px; padding:3px 9px; margin-bottom:10px; width:fit-content;
+  }
+
+  /* contact / footer */
+  .contact-links { display:flex; gap:16px; flex-wrap:wrap; margin-top:6px; }
+  footer { text-align:center; padding:30px 0 50px; color:var(--muted); font-size:12.5px; }
+
+  @media (max-width:760px) {
+    .stats { grid-template-columns:repeat(2, 1fr); }
+    .hero h1 { font-size:32px; }
+    .nav-links { position:fixed; top:57px; left:0; right:0; background:var(--surface-1); border-bottom:1px solid var(--gridline);
+      flex-direction:column; align-items:flex-start; padding:14px 22px; gap:14px; display:none; }
+    .nav-links.open { display:flex; }
+    .menu-btn { display:inline-block; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">Ankit Lal</div>
+    <nav class="nav-links" id="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div style="display:flex; gap:8px; align-items:center;">
+      <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle dark mode">◐</button>
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero" id="top">
+    <span class="eyebrow"><span class="dot"></span>Currently building Seg-AI at MoEngage</span>
+    <h1>Ankit Lal</h1>
+    <p class="role">Software Engineer — backend systems, distributed data pipelines &amp; agentic AI tooling</p>
+    <p class="bio">
+      I build REST APIs and async pipelines that hold up in production — currently at MoEngage, previously
+      helping scale Ninjacart's Ninja Kisan platform from 50K to 5M+ downloads. I like projects that force
+      real depth: distributed consensus, job orchestration, and systems that have to work under failure,
+      not just on the happy path.
+    </p>
+    <div class="cta-row">
+      <a class="btn primary" href="mailto:ankitlal.mail@gmail.com">Get in touch</a>
+      <a class="btn ghost" href="https://github.com/ankit-git00" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn ghost" href="https://linkedin.com/in/ankitlal14" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat-tile"><div class="sval">5–10x</div><div class="slabel">task-time reduction shipped via Seg-AI</div></div>
+      <div class="stat-tile"><div class="sval">5M+</div><div class="slabel">downloads on a platform I helped scale</div></div>
+      <div class="stat-tile"><div class="sval">30%</div><div class="slabel">incident volume reduction, 10+ services</div></div>
+      <div class="stat-tile"><div class="sval">14+</div><div class="slabel">REST APIs shipped across 5 microservices</div></div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2 class="section-title">About</h2>
+    <div class="about-body">
+      <div class="about-text">
+        <p>
+          I'm a Software Engineer at MoEngage working on Seg-AI, a natural-language layer over segment
+          management that lets AI agents act directly on user segments instead of routing everything through
+          manual dashboards. Before that, I was at Ninjacart building on the Ninja Kisan platform — REST APIs
+          in Java/Spring Boot, a multilingual video transcription &amp; dubbing pipeline, and a distributed job
+          orchestration system that cut main-server load by 60%.
+        </p>
+        <p>
+          I care about understanding systems past the point where the tutorial stops — which is part of why
+          I'm currently building a Raft consensus implementation from scratch in Java, alongside my
+          production work. I also compete on Codeforces and LeetCode when I want a smaller, sharper kind of
+          hard problem.
+        </p>
+      </div>
+      <div class="about-side">
+        <div class="fact"><span class="k">Location</span><span class="v">Bengaluru, India</span></div>
+        <div class="fact"><span class="k">Current role</span><span class="v">SE @ MoEngage</span></div>
+        <div class="fact"><span class="k">Education</span><span class="v">B.Tech CS, KIIT '24</span></div>
+        <div class="fact"><span class="k">Codeforces</span><span class="v">1399</span></div>
+        <div class="fact"><span class="k">LeetCode</span><span class="v">1760</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2 class="section-title">Experience</h2>
+    <div class="timeline">
+
+      <div class="job">
+        <div class="when">Jan 2026 — Present</div>
+        <div>
+          <h3>Software Engineer</h3>
+          <div class="co">MoEngage · Bengaluru, Karnataka</div>
+          <ul>
+            <li>Built 14+ REST APIs across 5 microservices (segment management, user-membership checks, user events, async count/export) powering Seg-AI — a 5–10x reduction in manual dashboard task time.</li>
+            <li>Contributed to a 30% reduction in incident volume and a 15% improvement in MTTR across 10+ services in 7 data centers, via a 24/7 on-call rotation.</li>
+            <li>Led the "Segment Edit" feature: persistent IDs and an async Celery-based propagation pipeline, shipped with zero disruption to downstream APIs.</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">Python</span><span class="tag">Java</span><span class="tag">MongoDB</span>
+            <span class="tag">Celery</span><span class="tag">AWS</span><span class="tag">Kafka</span>
+            <span class="tag">SQS</span><span class="tag">Airflow</span><span class="tag">Elasticsearch</span>
+            <span class="tag">Agentic AI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="when">Jul 2024 — Nov 2025</div>
+        <div>
+          <h3>Software Development Engineer</h3>
+          <div class="co">Ninjacart · Bengaluru, Karnataka</div>
+          <ul>
+            <li>Helped grow the Ninja Kisan platform from 50K to 5M+ downloads, building core modules (home feed, products, ratings) in Java, Spring Boot, and PostgreSQL.</li>
+            <li>Designed a video transcription &amp; dubbing pipeline (Python, TensorFlow, FFmpeg) enabling multilingual accessibility across 6 Indian languages.</li>
+            <li>Cut main server load by 60% with a distributed job orchestration system offloading CPU-intensive work to scalable runner nodes.</li>
+            <li>Increased notification click-through by 15% via a location-based, segmentable alerting system (Firebase Cloud Messaging + Airflow).</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">JavaScript</span><span class="tag">Java</span><span class="tag">Python</span>
+            <span class="tag">Node.js</span><span class="tag">Spring Boot</span><span class="tag">PostgreSQL</span>
+            <span class="tag">Redis</span><span class="tag">React</span><span class="tag">Airflow</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="when">Jan 2024 — Feb 2024</div>
+        <div>
+          <h3>Software Development Intern</h3>
+          <div class="co">Ninjacart · Bengaluru, Karnataka</div>
+          <ul>
+            <li>Added short-video support and optimized FFmpeg transcoding (FMP4 → MPEG-TS), driving a 25% increase in watch time.</li>
+            <li>Containerized the Ninja Kisan backend with Docker and set up centralized logging, metrics, and tracing with OpenTelemetry and Grafana.</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">Node.js</span>
+            <span class="tag">GCP</span><span class="tag">Bitbucket Pipelines</span><span class="tag">OpenTelemetry</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2 class="section-title">Skills</h2>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <h4>Languages</h4>
+        <div class="skill-tags">
+          <span class="tag">C++</span><span class="tag">Python</span><span class="tag">Java</span>
+          <span class="tag">JavaScript</span><span class="tag">HTML</span><span class="tag">CSS</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Frameworks &amp; Libraries</h4>
+        <div class="skill-tags">
+          <span class="tag">Node.js</span><span class="tag">Spring Boot</span>
+          <span class="tag">Apache Airflow</span><span class="tag">React.js</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Infrastructure &amp; Cloud</h4>
+        <div class="skill-tags">
+          <span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">GCP</span>
+          <span class="tag">AWS</span><span class="tag">Bitbucket Pipelines</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Databases &amp; Messaging</h4>
+        <div class="skill-tags">
+          <span class="tag">PostgreSQL</span><span class="tag">Elasticsearch</span>
+          <span class="tag">Redis</span><span class="tag">MongoDB</span><span class="tag">Kafka</span>
+          <span class="tag">SQS</span><span class="tag">Celery</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Tools</h4>
+        <div class="skill-tags">
+          <span class="tag">Git</span><span class="tag">Grafana</span><span class="tag">Postman</span>
+          <span class="tag">Redash</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2 class="section-title">Projects</h2>
+    <div class="project-grid">
+
+      <div class="project-card">
+        <h3>Copi</h3>
+        <p>Offline clipboard sync app over LAN with QR-based pairing and a TLS-secured WebSocket server. Uses a persistent foreground service to monitor clipboard changes and push updates securely.</p>
+        <div class="tag-row"><span class="tag">Python</span><span class="tag">Kotlin</span><span class="tag">WebSockets</span></div>
+      </div>
+
+      <div class="project-card">
+        <h3>KIIT-Mate</h3>
+        <p>Automates SAP attendance via a React Native app and a Python + BeautifulSoup backend on AWS Lambda, cutting access time by 90%. Ships with a Selenium-based desktop companion packaged via PyInstaller.</p>
+        <div class="tag-row"><span class="tag">Python</span><span class="tag">Selenium</span><span class="tag">AWS Lambda</span><span class="tag">React Native</span></div>
+      </div>
+
+      <div class="project-card">
+        <span class="badge-wip">In progress</span>
+        <h3>Raft KV Store</h3>
+        <p>A distributed key-value store with Raft consensus implemented from scratch in Java — leader election, log replication, crash recovery, and fault-injection tests for network partitions, no consensus library used.</p>
+        <div class="tag-row"><span class="tag">Java</span><span class="tag">Distributed Systems</span><span class="tag">Consensus</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title">Contact</h2>
+    <p style="color:var(--text-secondary); max-width:520px;">
+      Open to interesting conversations about distributed systems, backend architecture, or anything hard
+      enough to be worth building from scratch. Reach out any of these ways:
+    </p>
+    <div class="contact-links">
+      <a href="mailto:ankitlal.mail@gmail.com">ankitlal.mail@gmail.com</a>
+      <a href="https://linkedin.com/in/ankitlal14" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/ankit-git00" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://leetcode.com/ankitlal14" target="_blank" rel="noopener">LeetCode</a>
+    </div>
+  </section>
 
 </div>
 
----
+<footer>© <span id="year"></span> Ankit Lal — built with plain HTML/CSS, no framework.</footer>
 
-## About me
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-- 🔭 Currently building *Seg-AI* at MoEngage — a natural-language alternative to manual dashboard workflows, backed by 14+ REST APIs across 5 microservices and agentic AI actions on user segments.
-- ⚙️ Background spans martech (MoEngage), agritech (Ninjacart's Ninja Kisan, 50K → 5M+ downloads), and backend infra — REST APIs, async job pipelines, and distributed systems.
-- 🚨 24/7 on-call engineer across 10+ production services spanning 7 data centers — comfortable owning incidents end to end.
-- 🎓 B.Tech in Computer Science & System Engineering, Kalinga Institute of Industrial Technology (2020–2024).
-- 📫 Reach me at **ankitlal.mail@gmail.com* or on [LinkedIn](https://linkedin.com/in/ankitlal14).
-
----
-
-## Tech stack
-
-*Languages*
-
-![C++](https://img.shields.io/badge/C++-00599C?style=flat&logo=c%2B%2B&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
-![Java](https://img.shields.io/badge/Java-007396?style=flat&logo=openjdk&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
-
-*Frameworks & Libraries*
-
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white)
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=flat&logo=springboot&logoColor=white)
-![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
-![Apache Airflow](https://img.shields.io/badge/Airflow-017CEE?style=flat&logo=apacheairflow&logoColor=white)
-
-*Data & Messaging*
-
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white)
-![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat&logo=redis&logoColor=white)
-![Elasticsearch](https://img.shields.io/badge/Elasticsearch-005571?style=flat&logo=elasticsearch&logoColor=white)
-![Kafka](https://img.shields.io/badge/Kafka-231F20?style=flat&logo=apachekafka&logoColor=white)
-![Celery](https://img.shields.io/badge/Celery-37814A?style=flat&logo=celery&logoColor=white)
-
-*Infrastructure & Cloud*
-
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
-![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=flat&logo=kubernetes&logoColor=white)
-![AWS](https://img.shields.io/badge/AWS-232F3E?style=flat&logo=amazonaws&logoColor=white)
-![GCP](https://img.shields.io/badge/GCP-4285F4?style=flat&logo=googlecloud&logoColor=white)
-![Bitbucket Pipelines](https://img.shields.io/badge/Bitbucket%20Pipelines-0052CC?style=flat&logo=bitbucket&logoColor=white)
-
-*Tools*
-
-![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white)
-![Grafana](https://img.shields.io/badge/Grafana-F46800?style=flat&logo=grafana&logoColor=white)
-![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat&logo=postman&logoColor=white)
-
----
-
-## Experience
-
-*MoEngage* — Software Engineer · Jan 2026 – Present
-- Built 14+ REST APIs across 5 microservices (segment management, user-membership checks, user events, async count/export) powering *Seg-AI* — a 5–10x reduction in manual dashboard task time.
-- Contributed to a 30% reduction in incident volume and a 15% improvement in MTTR across 10+ services in 7 data centers.
-- Led the *Segment Edit* feature: persistent IDs and an async Celery-based propagation pipeline, shipped with zero disruption to downstream APIs.
-
-*Ninjacart* — Software Development Engineer · Jul 2024 – Nov 2025
-- Helped grow the *Ninja Kisan* platform from 50K to 5M+ downloads, building core modules (home feed, products, ratings) in Java, Spring Boot, and PostgreSQL.
-- Designed a video transcription and dubbing pipeline (Python, TensorFlow, FFmpeg) enabling multilingual accessibility across 6 Indian languages.
-- Cut main server load by 60% with a distributed job orchestration system offloading CPU-intensive work (transcoding, transcription, dubbing) to scalable runner nodes.
-- Increased notification click-through by 15% via a location-based, segmentable alerting system (Firebase Cloud Messaging + Apache Airflow).
-
-*Ninjacart* — Software Development Intern · Jan 2024 – Feb 2024
-- Added short-video support and optimized FFmpeg transcoding (FMP4 → MPEG-TS), driving a 25% increase in watch time.
-- Containerized the Ninja Kisan backend with Docker and set up centralized logging, metrics, and tracing with OpenTelemetry and Grafana.
-
----
-
-## Featured projects
-
-- *Copi* (Python, Kotlin, WebSockets) — an offline clipboard sync app over LAN with QR-based pairing and a TLS-secured WebSocket server, backed by a persistent foreground service that watches for clipboard changes.
-- *KIIT-Mate* (Python, Selenium, AWS Lambda, React Native) — automates SAP attendance via a React Native app and a Python/BeautifulSoup backend on AWS Lambda, cutting access time by 90%, with a Selenium-based desktop companion packaged via PyInstaller.
-
-> Add links to these repos once they're public — e.g. [Copi](https://github.com/ankit-git00/copi).
-
----
-
-## Competitive programming
-
-- *Codeforces:* 1399 (All-India Rank 243, Round 996 Div. 2)
-- *LeetCode:* 1760 (All-India Rank 341, Weekly Contest 367)
-
----
-
-## GitHub stats
-
-<div align="center">
-
-![Ankit's GitHub stats](https://github-readme-stats.vercel.app/api?username=ankit-git00&show_icons=true&theme=default&hide_border=true)
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=ankit-git00&layout=compact&hide_border=true)
-
-</div>
-
----
-
-<div align="center">
-
-📫 <b>ankitlal.mail@gmail.com</b> &nbsp;·&nbsp; <a href="https://linkedin.com/in/ankitlal14">LinkedIn</a> &nbsp;·&nbsp; <a href="https://leetcode.com/ankitlal14">LeetCode</a> &nbsp;·&nbsp; <a href="https://github.com/ankit-git00">GitHub</a>
-
-</div>
+  function applyTheme(t) {
+    document.documentElement.setAttribute('data-theme', t);
+  }
+  (function initTheme() {
+    let saved = null;
+    try { saved = localStorage.getItem('theme'); } catch (e) {}
+    if (saved) applyTheme(saved);
+  })();
+  function toggleTheme() {
+    const cur = document.documentElement.getAttribute('data-theme') ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const next = cur === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  }
+  function toggleMenu() {
+    document.getElementById('nav-links').classList.toggle('open');
+  }
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('nav-links').classList.remove('open'));
+  });
+</script>
+</body>
+</html>
